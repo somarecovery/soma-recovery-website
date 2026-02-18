@@ -256,6 +256,25 @@ img,
     color: #fff !important;
   }
 }
+/* =========================
+   HOME — "Explore Our Services" hover (desktop)
+   Forces the same hover feel as other dark buttons.
+========================= */
+.hero-actions a.btn[href="#services"]{
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s, border-color 0.2s;
+}
+
+@media (hover: hover) and (pointer: fine){
+  .hero-actions a.btn[href="#services"]:hover{
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.22);
+    transform: translateY(-1px);
+  }
+
+  .hero-actions a.btn[href="#services"]:active{
+    transform: translateY(0);
+  }
+}
 
 .btn-full { width: 100%; }
 
