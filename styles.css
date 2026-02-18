@@ -1,0 +1,1696 @@
+/* =========================
+   ROOT VARIABLES
+========================= */
+
+:root {
+  /* BACKGROUNDS */
+  --bg: #050509;
+  --bg-elevated: #06081a;
+  --bg-alt: #080c1e;
+
+  /* SOMA INDIGO / STUDIO BLUE */
+  --accent: #4F56C9;
+  --accent-light: #6A72F0;
+  --accent-dark: #373DA6;
+  --accent-soft: rgba(106, 114, 240, 0.14);
+  --glow-blue: rgba(106, 114, 240, 0.55);
+
+  /* TEXT */
+  --text-main: #f5f7fa;
+  --text-muted: #9aa0b3;
+
+  /* UI */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --pill-bg: rgba(6, 10, 30, 0.9);
+
+  --radius-lg: 18px;
+  --radius-md: 10px;
+
+  --shadow-soft: 0 24px 60px rgba(0, 0, 0, 0.6);
+
+  /* FONTS */
+  --font-sans: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-display: "Oswald", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* =========================
+   GLOBAL RESET
+========================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+
+  background-color: var(--bg);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+html {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+/* Global paragraphs justified on desktop */
+p {
+  text-align: justify;
+  margin: 0 0 0.7rem;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  width: min(1120px, 100% - 3rem);
+  margin: 0 auto;
+}
+
+/* Helpers (default desktop) */
+.desktop-only { display: block; }
+.mobile-only { display: none; }
+
+.nav-short { display: none; }
+.tag-short { display: none; }
+
+/* =========================
+   IMAGE LOAD SMOOTHING
+========================= */
+
+img,
+.service-media,
+.session-visual-media {
+  opacity: 1;
+  transition: none;
+}
+
+/* =========================
+   HEADER / NAV
+========================= */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: rgba(5, 5, 9, 0.95);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 0;
+}
+
+/* LOGO */
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 34px;
+  width: auto;
+  transition: transform 0.22s ease, filter 0.22s ease, opacity 0.22s ease;
+  transform-origin: center;
+}
+
+.logo img:hover {
+  transform: scale(1.08);
+  filter: drop-shadow(0 0 8px rgba(106, 114, 240, 0.65));
+}
+
+/* NAV */
+.main-nav {
+  display: flex;
+  gap: 1.25rem;
+  font-size: 0.85rem;
+}
+
+.main-nav a {
+  position: relative;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 500;
+  transition: color 0.22s ease, filter 0.22s ease;
+}
+
+.main-nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.45rem;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-light));
+  transition: width 0.22s ease-out;
+}
+
+.main-nav a:hover {
+  color: #ffffff;
+  filter: drop-shadow(0 0 8px rgba(106, 114, 240, 0.55));
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after {
+  width: 100%;
+}
+
+.main-nav a.active {
+  color: var(--text-main);
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  padding: 0.65rem 1.5rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s;
+  position: relative;
+  z-index: 1;
+}
+
+.btn-primary {
+  background: linear-gradient(120deg, var(--accent), var(--accent-light));
+  color: #fff;
+  box-shadow: 0 18px 42px var(--glow-blue);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 24px 52px rgba(106, 114, 240, 0.75);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 12px 28px rgba(106, 114, 240, 0.45);
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #fff;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.btn-ghost {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.btn-outline {
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: transparent;
+  color: #fff;
+}
+
+.btn-outline:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.btn-full { width: 100%; }
+
+.nav-cta { display: none; }
+@media (min-width: 820px) { .nav-cta { display: inline-flex; } }
+
+/* Social icons in header */
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-right: 0.2rem;
+}
+
+.social-icons img {
+  width: 18px;
+  height: 18px;
+  opacity: 0.85;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.social-icons img:hover {
+  opacity: 1;
+  transform: scale(1.12);
+}
+
+.nav-right{
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+/* =========================
+   MOBILE MENU — SAFE DEFAULTS (ALL SIZES)
+   ✅ Prevent invisible overlays from blocking desktop scroll.
+========================= */
+.mobile-menu,
+.mobile-menu-backdrop{
+  display: none;
+  pointer-events: none;
+}
+
+/* Burger hidden by default on desktop */
+.nav-toggle { display: none; }
+
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero {
+  position: relative;
+  padding: 5rem 0 1.5rem;
+  min-height: 72vh;
+  display: flex;
+  align-items: center;
+
+  background-image:
+    linear-gradient(
+      to bottom,
+      rgba(5, 5, 9, 0.06) 0%,
+      rgba(5, 5, 9, 0.14) 45%,
+      rgba(5, 5, 9, 0.26) 100%
+    ),
+    url("PICTURES/background.jpeg");
+
+  background-size: cover;
+  background-position: center 110%;
+  background-repeat: no-repeat;
+
+  filter: brightness(1.1) contrast(1.03);
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at top left, rgba(106, 114, 240, 0.06), transparent 65%);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none; /* ✅ extra-safe */
+  background:
+    radial-gradient(circle at top, rgba(5, 5, 9, 0.0) 0%, rgba(5, 5, 9, 0.52) 55%),
+    linear-gradient(to bottom, rgba(5, 5, 9, 0.642), #0505096d 75%);
+}
+
+.hero-content { position: relative; z-index: 2; }
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.75rem;
+  color: var(--accent-light);
+  margin-bottom: 0.8rem;
+  text-align: left;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 5vw, 3.7rem);
+  line-height: 1.05;
+  margin: 0 0 1.1rem;
+  text-align: left;
+}
+
+.hero h1 span { color: var(--accent-light); }
+
+.hero-title {
+  line-height: 1.05;
+  margin-bottom: 1.5rem;
+}
+
+.hero-title .hero-line-top { color: #ffffff !important; }
+
+.hero-line { display: block; }
+
+.hero-line-top {
+  font-size: 3.4rem;
+  letter-spacing: 0.03em;
+  color: #ffffff;
+}
+
+.hero-line-bottom {
+  font-size: 4.5rem;
+  font-weight: 700;
+  letter-spacing: 0.022em;
+  display: inline-block;
+  transform: scaleX(1.12);
+  transform-origin: left;
+  line-height: 1;
+}
+
+.hero-subtitle {
+  max-width: 36rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.hero-actions {
+  margin-top: 2.1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section { padding: 4.5rem 0; }
+
+.section-alt {
+  background:
+    radial-gradient(circle at 12% 8%, var(--accent-soft), transparent 55%),
+    var(--bg-alt);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.section-header { margin-bottom: 2.4rem; }
+
+.section-header h2 {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  margin: 0 0 0.4rem;
+}
+
+.section-header p {
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+.section-subheader {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--text-main);
+  margin-top: 0.6rem;
+  margin-bottom: 1.4rem;
+}
+
+/* =========================
+   SERVICES
+========================= */
+
+.services { padding-top: 3.5rem; }
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 820px) {
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.service-card {
+  background: rgba(8, 8, 16, 0.95);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow-soft);
+}
+
+.service-media {
+  position: relative;
+  height: 350px;
+  background-size: cover;
+  background-position: center top;
+}
+
+.service-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: rgba(5, 5, 9, 0.18);
+}
+
+.service-body { padding: 1.7rem; }
+
+.service-body h3 { margin: 0 0 0.6rem; }
+
+.service-body p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.service-tags {
+  list-style: none;
+  padding: 0;
+  margin: 1.1rem 0 1.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.service-tags li {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  background: var(--pill-bg);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* =========================
+   BRANDS SECTION
+========================= */
+
+.brands-section {
+  background:
+    radial-gradient(circle at top right, rgba(106, 114, 240, 0.12), transparent 55%),
+    var(--bg-elevated);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.brands-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+  align-items: center;
+}
+
+@media (min-width: 720px) {
+  .brands-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+
+.brand-item {
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  justify-self: stretch;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(15, 23, 42, 0.9);
+  border-radius: 20px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+}
+
+.brand-item img {
+  max-width: 78%;
+  max-height: 78%;
+  border-radius: 15px;
+  filter: grayscale(100%);
+  opacity: 0.9;
+}
+
+/* =========================
+   SPLIT LAYOUT (GLOBAL)
+========================= */
+
+.split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.6rem;
+}
+
+@media (min-width: 880px) {
+  .split {
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+  }
+}
+
+.split > * { min-width: 0; }
+
+/* =========================
+   PAGE HERO (INNER PAGES)
+========================= */
+
+.page-hero {
+  padding: 3.2rem 0 2.4rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  background:
+    radial-gradient(circle at 15% 0, var(--accent-soft), transparent 55%),
+    var(--bg-elevated);
+}
+
+.page-hero h1 {
+  font-family: var(--font-display);
+  font-size: 2.3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  margin: 0 0 0.6rem;
+  text-align: left;
+}
+
+.page-hero .hero-subtitle { max-width: 34rem; }
+
+/* ✅ Contact hero copy: desktop vs mobile (fix duplicate sentence) */
+.contact-sub-mobile{ display: none; }
+@media (max-width: 600px){
+  .contact-sub-desktop{ display: none; }
+  .contact-sub-mobile{ display: block; }
+}
+
+/* =========================
+   FEATURE / SESSION DETAILS
+========================= */
+
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 1.4rem 0 0;
+}
+
+.feature-list li {
+  margin-bottom: 0.75rem;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+/* =========================
+   SESSION VISUAL CARD (RECOVERY / MASSAGE)
+========================= */
+
+.session-card {
+  background: rgba(8, 8, 18, 0.96);
+  border-radius: var(--radius-lg);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: var(--shadow-soft);
+  overflow: visible;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 880px) {
+  .session-card {
+    max-width: 560px;
+    justify-self: end;
+    height: 100%;
+  }
+}
+
+.session-visual {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  flex: 1;
+}
+
+.session-visual-media {
+  flex: 0 0 300px;
+  height: 300px;
+  overflow: hidden;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+.session-meta {
+  padding: 1.6rem 1.6rem 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: rgba(8, 8, 18, 0.96);
+  flex: 1;
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+
+.session-meta h3 { margin: 0 0 0.25rem; }
+.session-meta p  { margin: 0 0 0.75rem; }
+
+@media (min-width: 880px) {
+  .session-meta .btn { margin-top: auto; }
+}
+
+/* =========================
+   HOME CTA (legacy support)
+========================= */
+
+.home-cta-card{
+  width: 100%;
+  margin: 0;
+  padding: 1.4rem 1.4rem 1.5rem;
+  border-radius: var(--radius-lg);
+  background: rgba(8, 8, 18, 0.96);
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow: var(--shadow-soft);
+  overflow: visible;
+}
+
+.home-cta-card .btn{ width: 100%; }
+.home-cta-card .btn + .btn{ margin-top: 0.9rem; }
+
+/* =========================
+   HOME — Questions & Inquiries button spacing
+========================= */
+
+.home-qi-actions{ margin-top: 2.2rem; }
+
+@media (min-width: 880px){
+  .home-qi-actions{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.4rem;
+    align-items: center;
+  }
+  .home-qi-actions .btn-full{ width: auto !important; }
+}
+
+@media (max-width: 879px){
+  .home-qi-actions{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .home-qi-actions .btn-full{ width: 100% !important; }
+}
+
+/* =========================
+   CONTACT PAGE
+========================= */
+
+.contact-section {
+  background:
+    radial-gradient(circle at bottom right, rgba(106, 114, 240, 0.2), transparent 55%),
+    var(--bg);
+}
+
+/* Default: stacked (mobile-first) */
+.contact-section .container.split{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.6rem;
+  align-items: start;
+}
+
+/* Desktop: two columns */
+@media (min-width: 820px){
+  .contact-section .container.split{
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+}
+
+.contact-info p {
+  margin: 0.35rem 0;
+  color: var(--text-muted);
+  text-align: left;
+}
+
+.contact-right{ min-width: 0; }
+
+.contact-form {
+  width: 100%;
+  background: rgba(7, 7, 14, 0.95);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Fields */
+.field { margin-bottom: 1.1rem; }
+
+.field label {
+  display: block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  margin-bottom: 0.4rem;
+  color: var(--text-muted);
+  text-align: left;
+}
+
+.field input,
+.field textarea,
+.field select {
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+  border: 1px solid var(--border-subtle);
+  background: #05050c;
+  color: var(--text-main);
+  padding: 0.65rem;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.field textarea{
+  min-height: 110px;
+  resize: vertical;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  outline: 2px solid var(--accent-light);
+  border-color: var(--accent-light);
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.form-status {
+  min-height: 1em;
+  margin-top: 0;
+  font-size: 0.9rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.form-status.success { color: var(--accent); opacity: 1; }
+.form-status.error { color: #f87171; opacity: 1; }
+
+/* Fix autofill */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #ffffff !important;
+  caret-color: #ffffff;
+  transition: background-color 9999s ease-out 0s;
+  -webkit-box-shadow: 0 0 0px 1000px rgba(5, 12, 20, 0.95) inset !important;
+  box-shadow: 0 0 0px 1000px rgba(5, 12, 20, 0.95) inset !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+input, textarea, select, option, button {
+  font-family: "Poppins", sans-serif;
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: rgba(5, 12, 20, 0.95);
+  color: #ffffff;
+  font-size: 0.95rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 14px;
+  padding: 0.8rem 2.5rem 0.8rem 1rem;
+  cursor: pointer;
+}
+
+/* ✅ Response line: MOBILE ONLY */
+.contact-response-line {
+  display: none;
+  color: var(--text-muted);
+  margin: 0 0 1.4rem;
+  text-align: left;
+}
+
+@media (max-width: 600px) {
+  .contact-response-line { display: block; }
+}
+
+/* ✅ Mobile: form first, contact info second + hide Contact title */
+@media (max-width: 600px){
+  .contact-section .container .split{
+    display: flex;
+    flex-direction: column;
+    gap: 2.2rem;
+  }
+
+  .contact-section .contact-right{ order: 1; }
+  .contact-section .contact-info{ order: 2; }
+
+  .contact-section .contact-info .section-header h2{
+    display: none;
+  }
+}
+
+/* =========================
+   CONTACT MAP (DESKTOP ONLY)
+========================= */
+
+/* Desktop: line up columns + keep map bottom-aligned */
+@media (min-width: 880px) {
+  .contact-section .split { align-items: stretch; }
+
+  .contact-page .contact-info {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .contact-page .contact-right { display: flex; height: 100%; }
+  .contact-page .contact-form  { height: 100%; }
+
+  .contact-page .contact-map {
+    margin-top: auto;
+    flex: 1;
+    min-height: 320px;
+  }
+
+  .contact-page .contact-map iframe {
+    height: 100%;
+    min-height: 320px;
+  }
+}
+
+/* Map wrapper */
+.contact-page .contact-map {
+  position: relative;
+  margin-top: 1.25rem;
+  width: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+}
+
+/* Dark / purple-tinted map, no interaction inside iframe */
+.contact-page .contact-map iframe {
+  width: 100%;
+  height: 320px;
+  border: 0;
+  display: block;
+
+  /* Dark + purple tone (keeps it black-ish, avoids bright colors) */
+  filter:
+    invert(1)
+    grayscale(1)
+    brightness(0.55)
+    contrast(1.35)
+    hue-rotate(215deg)
+    saturate(1.1);
+
+  border-radius: 18px;
+
+  /* IMPORTANT: stop scroll / zoom inside iframe (prevents scroll hijack) */
+  pointer-events: none;
+}
+
+/* Indigo overlay to match Sōma colors */
+.contact-page .contact-map::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+
+  background:
+    radial-gradient(circle at 20% 15%, rgba(106, 114, 240, 0.22), transparent 55%),
+    linear-gradient(to bottom, rgba(5, 5, 9, 0.05), rgba(5, 5, 9, 0.25));
+
+  opacity: 0.85;
+  mix-blend-mode: screen;
+}
+
+/* Clickable overlay link: "Open in Google Maps" */
+.contact-page .contact-map .map-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 0.55rem 0.9rem;
+
+  background: linear-gradient(to top, rgba(5, 5, 9, 0.78), transparent);
+
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+
+  text-decoration: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  pointer-events: auto;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .contact-page .contact-map:hover .map-overlay { opacity: 1; }
+}
+
+/* =========================================================
+   CONTACT — Clean info lines (Desktop inline, Mobile stacked)
+   Works with: .contact-lines / .contact-line / .label / .sep / .contact-link
+========================================================= */
+
+.contact-lines{
+  margin-top: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.contact-line{
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.6rem;
+  color: var(--text-muted);
+  text-align: left;
+}
+
+.contact-line .label{
+  font-weight: 600;
+  color: rgba(255,255,255,0.72);
+}
+
+.contact-line .sep{
+  color: rgba(255,255,255,0.28);
+  margin: 0 0.25rem;
+}
+
+/* Link styling (purple hover) */
+.contact-link{
+  color: rgba(255,255,255,0.88);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(106,114,240,0.22);
+  transition: color 0.2s ease, border-color 0.2s ease, filter 0.2s ease;
+}
+
+.contact-link:hover{
+  color: var(--accent-light);
+  border-color: rgba(106,114,240,0.6);
+  filter: drop-shadow(0 0 6px rgba(106, 114, 240, 0.6));
+}
+
+/* Mobile: stack cleanly, remove pipes, prevent ugly wrapping */
+@media (max-width: 600px){
+  .contact-line{
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 0.6rem;
+    row-gap: 0.55rem;
+  }
+
+  .contact-line .sep{ display: none; }
+  .contact-link{ border-bottom: none; }
+}
+
+/* =========================
+   WHAT TO EXPECT / STEPS
+========================= */
+
+.what-to-expect > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.4rem;
+  margin-top: 1.6rem;
+}
+
+@media (min-width: 760px) {
+  .steps-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+.step {
+  background: rgba(5, 5, 12, 0.94);
+  border-radius: var(--radius-md);
+  padding: 1rem 0.9rem 1.1rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Title left, number right, paragraph below */
+.steps-grid .step{
+  display: grid !important;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto;
+  column-gap: 0.9rem;
+  row-gap: 0.65rem;
+  align-items: start;
+  text-align: left !important;
+}
+
+.steps-grid .step :is(h3,h4){
+  grid-column: 1;
+  grid-row: 1;
+  margin: 0 !important;
+  padding: 0 !important;
+  text-align: left !important;
+}
+
+.steps-grid .step .step-number{
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: end;
+  align-self: center;
+  margin: 0 !important;
+
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-light);
+}
+
+.steps-grid .step p{
+  grid-column: 1 / -1;
+  grid-row: 2;
+  margin: 0 !important;
+  text-align: left !important;
+  text-justify: auto !important;
+}
+
+/* =========================
+   FAQ
+========================= */
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.4rem;
+  margin-top: 1.6rem;
+}
+
+@media (min-width: 760px) {
+  .faq-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.faq-item {
+  background: rgba(5, 5, 12, 0.94);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 1.1rem 1rem;
+}
+
+/* FAQ text NOT justified */
+.faq-item p{
+  text-align: left;
+  text-justify: auto;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.site-footer {
+  padding: 2rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: #050509;
+}
+
+.footer-inner {
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.footer-inner p { text-align: center; }
+
+.footer-sub {
+  margin-top: 0.2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+/* =========================
+   RESPONSIVE TWEAKS
+========================= */
+
+@media (max-width: 640px) {
+  .hero-content { padding-top: 4rem; }
+
+  .hero {
+    min-height: 70vh;
+    padding: 6rem 0 5rem;
+    background-position: center 40%;
+  }
+}
+
+/* Mobile typography: easier reading */
+@media (max-width: 600px) {
+  p { text-align: left; }
+}
+
+/* MOBILE ONLY: show/hide helpers + tag shortening */
+@media (max-width: 600px) {
+  .desktop-only { display: none !important; }
+  .mobile-only  { display: block !important; }
+
+  .tag-long  { display: none !important; }
+  .tag-short { display: inline !important; }
+
+  .hero-actions{
+    flex-wrap: nowrap;
+    gap: 0.75rem;
+  }
+
+  .hero-actions .btn{
+    flex: 1 1 0;
+    padding: 0.55rem 0.9rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.13em;
+  }
+
+  .service-media{ height: 230px; }
+
+  .service-tags{
+    flex-wrap: nowrap;
+    gap: 0.35rem;
+  }
+
+  .service-tags li{
+    font-size: 0.62rem;
+    padding: 0.28rem 0.55rem;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+  }
+
+  .brands-grid{
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.7rem;
+  }
+
+  .brand-item{ width: 100%; border-radius: 16px; }
+  .brand-item img{ max-width: 72%; max-height: 72%; }
+
+  .hide-on-mobile{ display: none !important; }
+
+  .section-header h2{
+    font-size: 1.35rem;
+    letter-spacing: 0.18em;
+  }
+
+  .section-header p{
+    font-size: 0.9rem;
+    margin-top: 0.35rem;
+  }
+
+  .footer-inner{ font-size: 0.72rem; }
+  .footer-inner p:first-child{ white-space: nowrap; }
+}
+
+/* =========================
+   MOBILE HEADER MENU
+========================= */
+@media (max-width: 820px) {
+  .main-nav { display: none; }
+  .nav-cta  { display: none; }
+
+  .logo { flex: 0 0 auto; }
+  .logo img { height: 34px; width: auto; }
+
+  .nav-right{
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 0 0 auto;
+  }
+
+  .social-icons{
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-right: 0;
+  }
+
+  .social-icons img{
+    width: 22px;
+    height: 22px;
+    opacity: 0.95;
+  }
+
+  .nav-toggle{
+    display: inline-flex;
+    width: 36px;
+    height: 36px;
+    border-radius: 14px;
+    border: none;
+    background: transparent;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+    box-shadow: none;
+  }
+
+  .nav-toggle:focus,
+  .nav-toggle:focus-visible,
+  .nav-toggle:active{
+    outline: none;
+    box-shadow: none;
+  }
+
+  .nav-toggle .burger{
+    width: 20px;
+    height: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .nav-toggle .burger span{
+    display: block;
+    height: 2px;
+    width: 100%;
+    border-radius: 2px;
+    background: rgba(255,255,255,0.9);
+  }
+
+  /* ✅ explicitly re-enable backdrop/menu on mobile
+     ✅ NO BLUR when menu open (no backdrop-filter)
+     ✅ Menu stays visible while scrolling (fixed)
+  */
+  .mobile-menu-backdrop{
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.55);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 1000;
+
+    /* important for scroll on iOS */
+    touch-action: pan-y;
+  }
+
+  .mobile-menu{
+    display: block;
+    position: fixed;
+    top: 14px;
+    right: 14px;
+    height: auto;
+    max-height: calc(100dvh - 28px);
+
+    width: min(65vw, 280px);
+
+    padding: 0.35rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.14);
+
+    background:
+      radial-gradient(circle at 20% 10%, rgba(106,114,240,0.18), transparent 45%),
+      rgba(8, 8, 18, 0.92);
+
+    box-shadow:
+      0 30px 90px rgba(0,0,0,0.75),
+      0 0 0 1px rgba(106,114,240,0.12);
+
+    overflow: hidden;
+    transform: translateX(calc(100% + 18px));
+    transition: transform 0.25s ease;
+    z-index: 1001;
+    pointer-events: auto;
+  }
+
+  .mobile-menu a{
+    display: block;
+    padding: 0.95rem 1rem;
+    border-radius: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.92);
+  }
+
+  .mobile-menu a:hover{ background: rgba(255,255,255,0.06); }
+
+  .mobile-menu a + a{
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .mobile-menu a:last-child{
+    margin-top: 0.25rem;
+    border-top: 1px solid rgba(255,255,255,0.10);
+    background: linear-gradient(120deg, rgba(79,86,201,0.95), rgba(106,114,240,0.95));
+    color: #fff;
+    text-align: center;
+    letter-spacing: 0.18em;
+  }
+
+  .mobile-menu a:last-child:hover{
+    filter: drop-shadow(0 0 10px rgba(106,114,240,0.55));
+  }
+
+  /* Open state (supports body.menu-open AND header.menu-open) */
+  body.menu-open .mobile-menu-backdrop,
+  .site-header.menu-open .mobile-menu-backdrop{
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  body.menu-open .mobile-menu,
+  .site-header.menu-open .mobile-menu{
+    transform: translateX(0);
+  }
+
+  /* ✅ allow page scroll while menu is open */
+  body.menu-open{
+    overflow: auto;
+  }
+
+  /* ✅ NO BLUR ANYWHERE when menu is open (mobile only)
+     - kill header blur
+     - kill any accidental backdrop-filter on overlay (even if added later)
+  */
+  body.menu-open .site-header,
+  .site-header.menu-open{
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  body.menu-open .mobile-menu-backdrop,
+  .site-header.menu-open .mobile-menu-backdrop{
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+}
+
+/* =========================================
+   MOBILE MENU UX IMPROVEMENTS (ONLY MOBILE)
+   - Burger becomes X when open
+   - Header icons/toggle not dimmed by backdrop
+   - No full-line highlight; text glows purple on tap
+========================================= */
+@media (max-width: 820px) {
+
+  /* 1) Keep header content (logo + social + toggle) ABOVE backdrop */
+  body.menu-open .site-header,
+  .site-header.menu-open{
+    z-index: 1102; /* above backdrop + menu panel */
+  }
+
+  /* Backdrop should NOT cover header content */
+  .mobile-menu-backdrop{
+    z-index: 1090; /* below header */
+  }
+
+  /* Menu panel stays above backdrop, below header toggle (still visible) */
+  .mobile-menu{
+    z-index: 1101;
+  }
+
+  /* Ensure the right-side items (icons + toggle) stay fully visible/clickable */
+  .nav-right{
+    position: relative;
+    z-index: 1103;
+  }
+
+  /* 2) Burger -> X animation when menu is open */
+  .nav-toggle .burger span{
+    transition: transform 0.18s ease, opacity 0.18s ease;
+    transform-origin: center;
+  }
+
+  body.menu-open .nav-toggle .burger span:nth-child(1),
+  .site-header.menu-open .nav-toggle .burger span:nth-child(1){
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  body.menu-open .nav-toggle .burger span:nth-child(2),
+  .site-header.menu-open .nav-toggle .burger span:nth-child(2){
+    opacity: 0;
+  }
+
+  body.menu-open .nav-toggle .burger span:nth-child(3),
+  .site-header.menu-open .nav-toggle .burger span:nth-child(3){
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+  /* 3) Remove full-line highlight on menu links; glow text on tap */
+  .mobile-menu a{
+    background: transparent !important; /* kills any line highlight */
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* remove the previous hover background behavior */
+  .mobile-menu a:hover{
+    background: transparent !important;
+  }
+
+  /* glow + purple text on tap/focus */
+  .mobile-menu a:active,
+  .mobile-menu a:focus-visible{
+    color: var(--accent-light) !important;
+    filter: drop-shadow(0 0 8px rgba(106,114,240,0.65));
+  }
+
+  /* optional: keep Book Now button from “highlighting the whole block” too */
+  .mobile-menu a:last-child:active,
+  .mobile-menu a:last-child:focus-visible{
+    filter: drop-shadow(0 0 10px rgba(106,114,240,0.75));
+  }
+}
+/* =========================================
+   MOBILE MENU — FINAL TOUCHES
+   - Keep BOOK NOW purple
+   - Hide header social icons when menu is open
+========================================= */
+@media (max-width: 820px) {
+
+  /* Hide the header social icons ONLY when menu is open */
+  body.menu-open .site-header .social-icons,
+  .site-header.menu-open .social-icons{
+    display: none !important;
+  }
+
+  /* Keep all menu links transparent... */
+  .mobile-menu a{
+    background: transparent !important;
+  }
+
+  /* ...BUT restore the purple style on BOOK NOW (last link) */
+  .mobile-menu a:last-child{
+    background: linear-gradient(120deg, rgba(79,86,201,0.95), rgba(106,114,240,0.95)) !important;
+    color: #fff !important;
+    text-align: center;
+  }
+
+  /* On tap, don’t change BOOK NOW text to purple (keep it white), just glow */
+  .mobile-menu a:last-child:active,
+  .mobile-menu a:last-child:focus-visible{
+    color: #fff !important;
+    filter: drop-shadow(0 0 10px rgba(106,114,240,0.75));
+  }
+}
+/* Mobile: shorten "Explore Our Services" text without changing HTML */
+@media (max-width: 600px){
+  a.btn[href="#services"]{
+    position: relative;
+    color: transparent;
+  }
+
+  a.btn[href="#services"]::after{
+    content: "Our Services";
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    letter-spacing: 0.14em;
+    pointer-events: none;
+  }
+}
+
+/* Mobile: inner pages title fits */
+@media (max-width: 600px){
+  .page-hero h1{
+    font-size: 1.75rem;
+    letter-spacing: 0.10em;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 380px){
+  .page-hero h1{
+    font-size: 1.60rem;
+    letter-spacing: 0.08em;
+  }
+}
+
+/* Mobile hero buttons not too tall */
+@media (max-width: 600px){
+  .hero-actions{ align-items: stretch; }
+
+  .hero-actions .btn{
+    height: 48px;
+    padding: 0 1rem !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+
+  a.btn[href="#services"]::after{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+}
+
+/* ✅ REMOVE "Who We Treat" section (ALL DEVICES) */
+.who-we-treat{
+  display: none !important;
+}
+/* CONTACT INFO LINKS */
+.contact-page .contact-info a{
+  color: var(--text-main);
+  transition: color 0.2s ease, filter 0.2s ease;
+}
+
+/* Hover effect */
+.contact-page .contact-info a:hover{
+  color: var(--accent-light);
+  filter: drop-shadow(0 0 6px rgba(106, 114, 240, 0.6));
+}
+
+/* =========================
+   CONTACT (MOBILE) — keep Phone | Email on ONE line
+========================= */
+@media (max-width: 600px){
+  .contact-mobile-mini{
+    margin-top: 1rem;
+    text-align: center;
+
+    /* make it fit */
+    font-size: 0.60rem;     /* <-- smaller */
+    line-height: 1.2;
+    white-space: nowrap;     /* <-- force one line */
+    overflow: hidden;
+    text-overflow: ellipsis; /* safety if super narrow */
+  }
+
+  .contact-mobile-mini .sep{
+    margin: 0 0.35rem;
+    opacity: 0.55;
+  }
+
+  .contact-mobile-mini .label{
+    font-weight: 600;
+    opacity: 0.8;
+  }
+
+  .contact-mobile-mini a{
+    font-size: 0.72rem; /* match */
+  }
+}
+
+/* =========================
+   CONTACT (MOBILE) — reduce space before footer
+========================= */
+@media (max-width: 600px){
+  /* Reduce bottom padding ONLY for the Contact section */
+  .contact-page .contact-section.section{
+    padding-bottom: 1.6rem; /* was effectively ~4.5rem */
+  }
+
+  /* Remove any extra margin under the Phone | Email line */
+  .contact-page .contact-mobile-mini{
+    margin: 0.9rem 0 0; /* no bottom margin */
+  }
+
+  /* Optional: slightly tighter footer on mobile */
+  .contact-page .site-footer{
+    padding-top: 1.2rem;
+  }
+}
+/* =========================
+   CONTACT FORM — MOBILE FIXES
+========================= */
+
+/* Keep the send button on ONE line */
+.contact-page #sendBtn{
+  white-space: nowrap;
+}
+
+/* Mobile: make status appear UNDER the button (prevents button wrapping) */
+@media (max-width: 600px){
+  .contact-page .form-actions{
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.6rem;
+  }
+
+  .contact-page #sendBtn{
+    width: 100%;
+    font-size: 0.78rem;
+    letter-spacing: 0.12em;
+    padding: 0.9rem 1.1rem;
+  }
+
+  .contact-page .form-status{
+    width: 100%;
+    margin: 0;
+    text-align: left;
+    line-height: 1.3;
+  }
+}
+
+/* =========================================
+   DESKTOP FIX: "What's Included" list spacing
+   (Recovery + Massage pages ONLY)
+   ========================================= */
+@media (min-width: 821px) {
+  body.recovery-page .feature-list,
+  body.massage-page  .feature-list {
+    margin-top: 1.6rem; /* a bit more breathing room above list */
+  }
+
+  body.recovery-page .feature-list li,
+  body.massage-page  .feature-list li {
+    line-height: 1.7;      /* fixes the "compressed" look */
+    margin-bottom: 1.05rem; /* more space between items */
+  }
+
+  /* Optional: slightly separate the bold label from the description */
+  body.recovery-page .feature-list li strong,
+  body.massage-page  .feature-list li strong {
+    margin-right: 0.25rem;
+  }
+}

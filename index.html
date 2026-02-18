@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Sōma Recovery Studio</title>
+
+  <!-- Google Fonts (preconnected + no text flash) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Oswald:wght@400;500;600&display=block"
+  >
+
+  <!-- Preload key images for smoother transitions -->
+  <link rel="preload" as="image" href="PICTURES/background.jpeg">
+  <link rel="preload" as="image" href="PICTURES/cupping.png">
+  <link rel="preload" as="image" href="PICTURES/massage.PNG">
+  <link rel="preload" as="image" href="PICTURES/massage2.jpeg">
+  <link rel="preload" as="image" href="PICTURES/sauna.jpeg">
+  <link rel="preload" as="image" href="PICTURES/small.jpeg">
+  <link rel="preload" as="image" href="PICTURES/cuppingfull.jpeg">
+
+  <!-- Main stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Meta Pixel Code -->
+  <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '4151699605071330');
+      fbq('track', 'PageView');
+  </script>
+  <noscript>
+      <img height="1" width="1" style="display:none"
+           src="https://www.facebook.com/tr?id=4151699605071330&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Code -->
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo">
+        <img src="PICTURES/logo.png" alt="Sōma Recovery Studio" />
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="main-nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="recovery.html">
+          <span class="nav-long">Recovery Session</span>
+          <span class="nav-short">Recovery</span>
+        </a>
+        <a href="massage.html">
+          <span class="nav-long">Massage Session</span>
+          <span class="nav-short">Massage</span>
+        </a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="nav-right">
+        <div class="social-icons">
+          <a href="https://www.instagram.com/somarecoveryla/" target="_blank" aria-label="Instagram" rel="noopener noreferrer">
+            <img src="PICTURES/instagram-icon.svg" alt="Instagram">
+          </a>
+          <a href="https://www.tiktok.com/@somarecoverystudio" target="_blank" aria-label="TikTok" rel="noopener noreferrer">
+            <img src="PICTURES/tiktok-logo.svg" alt="TikTok">
+          </a>
+        </div>
+
+        <!-- Desktop CTA -->
+        <a
+          href="https://somarecoveryla.square.site/"
+          class="btn btn-outline nav-cta"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Book Now
+        </a>
+
+        <!-- Mobile burger -->
+        <button class="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false">
+          <span class="burger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile dropdown -->
+    <div class="mobile-menu" aria-hidden="true">
+      <a href="index.html">Home</a>
+      <a href="recovery.html">Recovery</a>
+      <a href="massage.html">Massage</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://somarecoveryla.square.site/" target="_blank" rel="noopener noreferrer">Book Now</a>
+    </div>
+
+    <div class="mobile-menu-backdrop" aria-hidden="true"></div>
+  </header>
+
+  <main>
+    <!-- Hero / Banner -->
+    <section class="hero">
+      <!-- ✅ FIX: overlay must NOT capture mouse/wheel -->
+      <div class="hero-overlay" style="pointer-events: none;"></div>
+
+      <div class="container hero-content">
+        <p class="eyebrow">Athletes • Lifters • Weekend Warriors</p>
+
+        <h1 class="hero-title">
+          <span class="hero-line hero-line-top">Stronger Than</span>
+          <span class="hero-line hero-line-bottom">Yesterday</span>
+        </h1>
+
+        <p class="hero-subtitle desktop-only">
+          Welcome to Sōma, where we prioritize your wellness and rejuvenation. Our expert team offers a variety of services designed to enhance your recovery and performance. Whether you're an athlete or simply seeking relief from daily stress, our tailored approaches will help you restore balance and vitality. Experience the difference in your recovery journey with us today.
+        </p>
+
+        <p class="hero-subtitle mobile-only">
+          Welcome to Sōma Recovery, where we prioritize your wellness and rejuvenation.
+        </p>
+
+        <div class="hero-actions">
+          <a
+            href="https://somarecoveryla.square.site/"
+            class="btn btn-primary"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Book A Session
+          </a>
+          <a href="#services" class="btn btn-ghost">Explore Our Services</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services preview -->
+    <section id="services" class="section services">
+      <div class="container">
+        <div class="section-header">
+          <h2>Services</h2>
+          <p>Science-Backed Recovery & Massage Sessions</p>
+        </div>
+
+        <div class="services-grid">
+          <!-- Recovery Session card -->
+          <article class="service-card">
+            <div class="service-media" style="background-image: url('PICTURES/cupping.png');"></div>
+            <div class="service-body">
+              <h3>Recovery Session</h3>
+
+              <p class="desktop-only">
+                A customized recovery protocol using Normatec compression boots, red light sauna,
+                Hypervolt massage gun, cupping and more — designed around your training load.
+              </p>
+
+              <p class="mobile-only">
+                A customized recovery protocol built around your training — compression, sauna, cupping, and more.
+              </p>
+
+              <ul class="service-tags">
+                <li>Normatec Boots</li>
+                <li><span class="tag-long">Red light Sauna</span><span class="tag-short">Sauna</span></li>
+                <li>Cupping</li>
+              </ul>
+
+              <a href="recovery.html" class="btn btn-secondary">View Recovery Details</a>
+            </div>
+          </article>
+
+          <!-- Massage Session card -->
+          <article class="service-card">
+            <div class="service-media" style="background-image: url('PICTURES/massage.PNG');"></div>
+            <div class="service-body">
+              <h3>Massage Session</h3>
+
+              <p class="desktop-only">
+                Performance-focused bodywork blending deep tissue, sports massage and assisted
+                stretching to reduce tension and keep you on the field, not the sidelines.
+              </p>
+
+              <p class="mobile-only">
+                Performance-focused bodywork to reduce tension, restore movement, and speed up recovery.
+              </p>
+
+              <ul class="service-tags">
+                <li><span class="tag-long">Sports massage</span><span class="tag-short">Massage</span></li>
+                <li>Deep tissue</li>
+                <li><span class="tag-long">Assisted stretching</span><span class="tag-short">Stretching</span></li>
+              </ul>
+
+              <a href="massage.html" class="btn btn-secondary">View Massage Details</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Brands We Work With -->
+    <section class="section brands-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Brands We Work With</h2>
+
+          <p class="desktop-only">
+            We’re proud to support athletes and active humans alongside trusted performance, recovery
+            and wellness brands.
+          </p>
+
+          <p class="mobile-only">
+            Proud to support athletes with trusted performance and recovery brands.
+          </p>
+        </div>
+
+        <div class="brands-grid">
+          <div class="brand-item">
+            <img src="PICTURES/6.png" alt="Brand 1" />
+          </div>
+          <div class="brand-item">
+            <img src="PICTURES/7.png" alt="Brand 2" />
+          </div>
+          <div class="brand-item">
+            <img src="PICTURES/8.png" alt="Brand 3" />
+          </div>
+
+          <!-- Hide THIS one on mobile (this should be Maxxus) -->
+          <div class="brand-item hide-on-mobile">
+            <img src="PICTURES/9.png" alt="Brand 4" />
+          </div>
+
+          <div class="brand-item">
+            <img src="PICTURES/10.png" alt="Brand 5" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who we treat (kept in HTML but your CSS hides it if desired) -->
+    <section class="section section-alt who-we-treat">
+      <div class="container split">
+        <div>
+          <div class="section-header">
+            <h2>Who We Treat</h2>
+          </div>
+
+          <p class="desktop-only">
+            Whether you’re grinding through F45, pushing heavy in the gym, stacking
+            miles on the road or just living an active lifestyle, your body needs
+            structured recovery to keep up with your goals. Sōma combines advanced tools with great coaching so you can recover
+            faster, reduce injury risk and show up ready to perform. We treat high level athletes, from college to professional sports, making sure they stay at the top of their game.
+          </p>
+
+          <p class="mobile-only">
+            Built for anyone that trains hard, stays active, and wants to recover faster.
+          </p>
+        </div>
+
+        <div class="built-for-right">
+          <div class="built-visual-card">
+            <div
+              class="built-visual-media"
+              style="background-image: url('PICTURES/background.jpeg');"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Questions & Inquiries -->
+    <section class="section">
+      <div class="container">
+        <div class="home-qi">
+          <div class="section-header" style="margin-bottom: 0;">
+            <h2 class="home-qi-title">Questions &amp; Inquiries</h2>
+          </div>
+
+          <p class="home-qi-text desktop-only">
+            Not sure which recovery or massage session is right for you? Want to know how recovery can
+            fit into your training or work schedule? Interested in a potential partnership? Send us a message on our contact page and we’ll do our best to point you in the right direction.
+          </p>
+
+          <p class="home-qi-text mobile-only">
+            Reach out by sending us a message on our contact page or book directly now.
+          </p>
+
+          <div class="home-qi-actions">
+            <a
+              href="https://somarecoveryla.square.site/"
+              class="btn btn-primary btn-full"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Book Online Now
+            </a>
+
+            <a href="contact.html" class="btn btn-secondary btn-full">
+              Go to Contact Page
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Sōma Recovery Studio. All Rights Reserved.</p>
+      <p class="footer-sub">STRONGER THAN YESTERDAY</p>
+    </div>
+    <script>
+      document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+  </footer>
+
+  <!-- ✅ MENU SCRIPT MUST BE AFTER HEADER EXISTS -->
+  <script>
+    (function () {
+      const toggle = document.querySelector(".nav-toggle");
+      const menu = document.querySelector(".mobile-menu");
+      const backdrop = document.querySelector(".mobile-menu-backdrop");
+
+      if (!toggle || !menu || !backdrop) return;
+
+      const isOpen = () => document.body.classList.contains("menu-open");
+
+      function desktopSafetyReset() {
+        if (window.innerWidth > 820) {
+          document.body.classList.remove("menu-open");
+          toggle.setAttribute("aria-expanded", "false");
+          menu.setAttribute("aria-hidden", "true");
+          backdrop.setAttribute("aria-hidden", "true");
+        }
+      }
+
+      desktopSafetyReset();
+      window.addEventListener("resize", desktopSafetyReset);
+
+      function openMenu() {
+        document.body.classList.add("menu-open");
+        toggle.setAttribute("aria-expanded", "true");
+        menu.setAttribute("aria-hidden", "false");
+        backdrop.setAttribute("aria-hidden", "false");
+      }
+
+      function closeMenu() {
+        document.body.classList.remove("menu-open");
+        toggle.setAttribute("aria-expanded", "false");
+        menu.setAttribute("aria-hidden", "true");
+        backdrop.setAttribute("aria-hidden", "true");
+      }
+
+      toggle.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        isOpen() ? closeMenu() : openMenu();
+      });
+
+      menu.addEventListener("click", (e) => e.stopPropagation());
+      backdrop.addEventListener("click", closeMenu);
+
+      document.addEventListener("click", (e) => {
+        if (!isOpen()) return;
+        if (!menu.contains(e.target) && !toggle.contains(e.target)) closeMenu();
+      });
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeMenu();
+      });
+
+      menu.querySelectorAll("a").forEach((a) => a.addEventListener("click", closeMenu));
+    })();
+  </script>
+</body>
+</html>
